@@ -9,5 +9,5 @@ interface API {
     // To get the data, I need to insert the verb that will be applied.
     @GET("/books")
     // This fun will be used to make actual requests.
-    suspend fun getBooksList():Response<List<BookContentDto>>
+    suspend fun getBooksList(): Response<List<BookContentDto>>
 }

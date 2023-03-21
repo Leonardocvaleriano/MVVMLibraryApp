@@ -5,8 +5,11 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeplace.mvvmlibraryapp.databinding.ActivityHomeBinding
 import com.codeplace.mvvmlibraryapp.stateFlow.StateFlow
+import com.codeplace.mvvmlibraryapp.ui.home.adapter.BookListAdapter
+import com.codeplace.mvvmlibraryapp.ui.home.view.model.BookContentDto
 import com.codeplace.mvvmlibraryapp.ui.home.viewModel.BookViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,16 +34,20 @@ class HomeActivity : AppCompatActivity() {
         viewModel.bookList.observe(this){
             when(it){
                 is StateFlow.Loading -> loading(it.loading)
-                is StateFlow.Success<*> -> initBookListAdapter(it.data as List<*>)
+                is StateFlow.Success<*> -> initBookListAdapter(it.data as List<BookContentDto>)
                 is StateFlow.Error -> error(it.errorMessage)
 
             }
         }
     }
 
-    private fun initBookListAdapter(data: List<*>) {
+    private fun initBookListAdapter(data: List<BookContentDto>) {
 
-
+        with(binding){
+            val adapter = BookListAdapter(data)
+            recyclerView.layoutManager = LinearLayoutManager(this@HomeActivity)
+            recyclerView.adapter = adapter
+        }
     }
 
     private fun loading(loading: Boolean) {

@@ -16,7 +16,6 @@ open class BaseViewModel: ViewModel() {
 
         viewModelScope.launch {
             try {
-                //liveData.postValue()
                 val response = service()
                 if (response.isSuccessful) {
                     liveData.value = StateFlow.Loading(false)

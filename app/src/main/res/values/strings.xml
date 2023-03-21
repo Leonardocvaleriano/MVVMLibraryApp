@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVVM Library App</string>
+    <string name="book_image">Book Image</string>
+</resources>

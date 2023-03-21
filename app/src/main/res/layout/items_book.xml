@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_book"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="30dp"
+    app:layout_constraintTop_toTopOf="@+id/top"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/block"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:id="@+id/img_book"
+            android:layout_width="95dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_book"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_book"
+            android:contentDescription="@string/book_image" />
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintStart_toEndOf="@+id/img_book"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="The Book Of Eli" />
+
+        <TextView
+            android:id="@+id/txt_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/img_book"
+            app:layout_constraintTop_toBottomOf="@id/txt_title"
+            tools:text="Sam Moffie" />
+
+        <TextView
+            android:id="@+id/txt_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/img_book"
+            app:layout_constraintTop_toBottomOf="@+id/txt_isbn"
+            tools:text="€" />
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/txt_currency"
+            app:layout_constraintTop_toBottomOf="@+id/txt_isbn"
+            tools:text="300,00"
+            android:layout_marginStart="3dp"
+
+            />
+
+        <TextView
+            android:id="@+id/txt_isbn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/img_book"
+            app:layout_constraintTop_toBottomOf="@+id/txt_author"
+            tools:text="978-3-16-148410-0" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+

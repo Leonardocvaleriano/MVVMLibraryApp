@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.codeplace.mvvmlibraryapp.databinding.ActivityHomeBinding
 import com.codeplace.mvvmlibraryapp.stateFlow.StateFlow
-import com.codeplace.mvvmlibraryapp.ui.home.view.ViewModel.BookViewModel
+import com.codeplace.mvvmlibraryapp.ui.home.viewModel.BookViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initBookListAdapter(data: List<*>) {
 
-        Toast.makeText(this, "System is working", Toast.LENGTH_SHORT).show()
+
     }
 
     private fun loading(loading: Boolean) {

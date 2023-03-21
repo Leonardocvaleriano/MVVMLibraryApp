@@ -1,4 +1,4 @@
-package com.codeplace.mvvmlibraryapp.ui.home.view.ViewModel
+package com.codeplace.mvvmlibraryapp.ui.home.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import com.codeplace.mvvmlibraryapp.network.repository.BookRepository

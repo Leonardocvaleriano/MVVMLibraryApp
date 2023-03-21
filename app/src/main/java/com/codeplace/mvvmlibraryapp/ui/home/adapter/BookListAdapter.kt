@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codeplace.mvvmlibraryapp.databinding.ItemsBookBinding
 import com.codeplace.mvvmlibraryapp.ui.home.view.model.BookContentDto
+import com.codeplace.mvvmlibraryapp.util.priceFormatter
 
 class BookListAdapter(val bookList: List<BookContentDto>) :
     RecyclerView.Adapter<BookListAdapter.ViewHolder>() {
@@ -24,11 +25,9 @@ class BookListAdapter(val bookList: List<BookContentDto>) :
        val booklistPosition = bookList[position]
         viewHolder.view.txtTitle.text = booklistPosition.title
         viewHolder.view.txtAuthor.text = booklistPosition.author
-        viewHolder.view.txtCurrency.text = booklistPosition.currencyCode.toString()
-        viewHolder.view.txtPrice.text = booklistPosition.price.toString()
+        viewHolder.view.txtCurrency.text = booklistPosition.currencyCode
+        viewHolder.view.txtPrice.text = priceFormatter(booklistPosition.price)
         viewHolder.view.txtIsbn.text = booklistPosition.isbn
-
     }
-
     override fun getItemCount() = bookList.size
 }

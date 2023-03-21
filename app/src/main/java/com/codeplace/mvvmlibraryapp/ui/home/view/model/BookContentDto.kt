@@ -1,5 +1,6 @@
 package com.codeplace.mvvmlibraryapp.ui.home.view.model
 
+
 data class BookContentDto(
     val author: String,
     val currencyCode: String,

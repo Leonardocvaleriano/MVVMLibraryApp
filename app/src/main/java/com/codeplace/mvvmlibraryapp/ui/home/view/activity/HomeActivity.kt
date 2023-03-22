@@ -1,5 +1,6 @@
 package com.codeplace.mvvmlibraryapp.ui.home.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -15,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
      private val viewModel by viewModel<BookViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,9 @@ class HomeActivity : AppCompatActivity() {
         initObservables()
     }
 
+
+
+
     private fun initValues() {
         viewModel.getBookList()
     }
@@ -34,27 +38,36 @@ class HomeActivity : AppCompatActivity() {
         viewModel.bookList.observe(this){
             when(it){
                 is StateFlow.Loading -> loading(it.loading)
-                is StateFlow.Success<*> -> initBookListAdapter(it.data as List<BookContentDto>)
-                is StateFlow.Error -> error(it.errorMessage)
-
+                is StateFlow.Success -> initBookListAdapter(it.data)
+                is StateFlow.Error -> error(it.errorMessage, it.detail)
             }
         }
     }
 
-    private fun initBookListAdapter(data: List<BookContentDto>) {
+    private fun initBookListAdapter(dataList:List<BookContentDto>) {
 
         with(binding){
-            val adapter = BookListAdapter(data)
+            val adapter = BookListAdapter(dataList, this@HomeActivity)
             recyclerView.layoutManager = LinearLayoutManager(this@HomeActivity)
             recyclerView.adapter = adapter
         }
     }
 
+
+
+
+
     private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if (loading) VISIBLE else GONE
     }
 
-    private fun error(error: String?) {
+    private fun error(error: String?, detail:String?) {
+        Intent(this, ErrorActivity::class.java).also {
+            it.putExtra("EXTRA_ERROR_MESSAGE", error)
+            it.putExtra("EXTRA_ERROR_DETAIL", detail)
+            startActivity(it)
+        }
+
         Toast.makeText(this, "$error", Toast.LENGTH_SHORT).show()
      }
 

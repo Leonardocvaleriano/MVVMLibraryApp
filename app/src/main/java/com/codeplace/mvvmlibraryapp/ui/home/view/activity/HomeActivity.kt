@@ -54,9 +54,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-
-
-
     private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if (loading) VISIBLE else GONE
     }

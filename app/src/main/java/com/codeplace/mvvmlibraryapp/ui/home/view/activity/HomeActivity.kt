@@ -29,8 +29,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun initValues() {
         viewModel.getBookList()
     }

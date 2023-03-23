@@ -16,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomeBinding
+     private lateinit var binding: ActivityHomeBinding
      private val viewModel by viewModel<BookViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -16,6 +16,13 @@
         android:theme="@style/Theme.MVVMLibraryApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.view.activity.BookDetailsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.home.view.activity.ErrorActivity"
             android:exported="false">
             <meta-data

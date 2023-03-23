@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.view.activity.ErrorActivity"
+    android:orientation="vertical"
+    android:gravity="center"    >
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/ic_error_image"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/TxtMainError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        tools:text="No internet connection"
+        android:textSize="30sp">
+    </TextView>
+    <TextView
+        android:id="@+id/TxtDetailedError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        tools:text="Check your connection, then refresh the page"
+        android:textSize="15sp">
+    </TextView>
+    <Button
+        android:layout_marginTop="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        />
+</LinearLayout>

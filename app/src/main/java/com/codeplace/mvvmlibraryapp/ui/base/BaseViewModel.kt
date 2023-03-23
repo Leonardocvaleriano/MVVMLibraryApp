@@ -19,7 +19,7 @@ open class BaseViewModel: ViewModel() {
                 val response = service()
                 if (response.isSuccessful) {
                     liveData.value = StateFlow.Loading(false)
-                    liveData.value = StateFlow.Success(response.body())
+                    liveData.value = StateFlow.Success(response.body() as List<BookContentDto>)
                 } else {
                     liveData.value = StateFlow.Loading(false)
                     handleNetworkErrors(response)

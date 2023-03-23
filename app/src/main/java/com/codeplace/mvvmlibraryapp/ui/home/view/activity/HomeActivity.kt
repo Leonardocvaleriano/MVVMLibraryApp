@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
      private val viewModel by viewModel<BookViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel.bookList.observe(this){
             when(it){
                 is StateFlow.Loading -> loading(it.loading)
-                is StateFlow.Success<*> -> initBookListAdapter(it.data as List<BookContentDto>)
+                is StateFlow.Success-> initBookListAdapter(it.data)
                 is StateFlow.Error -> error(it.errorMessage)
 
             }
@@ -44,9 +44,10 @@ class HomeActivity : AppCompatActivity() {
     private fun initBookListAdapter(data: List<BookContentDto>) {
 
         with(binding){
-            val adapter = BookListAdapter(data)
+            val adapter = BookListAdapter(data, this@HomeActivity)
             recyclerView.layoutManager = LinearLayoutManager(this@HomeActivity)
             recyclerView.adapter = adapter
+
         }
     }
 

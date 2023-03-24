@@ -1,7 +1,5 @@
 package com.codeplace.mvvmlibraryapp.stateFlow
 
-import com.codeplace.mvvmlibraryapp.ui.home.view.model.BookContentDto
-
 /*
 * Class create to enable the exhaustive when statement
 * when we would need to implement it in our activity to handle

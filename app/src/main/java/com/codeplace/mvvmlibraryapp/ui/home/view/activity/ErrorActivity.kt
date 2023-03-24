@@ -18,8 +18,12 @@ class ErrorActivity : AppCompatActivity() {
 
 
         with(binding){
-            TxtMainError.text = error.toString()
-            TxtDetailedError.text = errorDetail.toString()
+            txtMainError.text = error.toString()
+            txtDetailedError.text = errorDetail.toString()
+
+            btnBack.setOnClickListener {
+                finish()
+            }
         }
     }
 }

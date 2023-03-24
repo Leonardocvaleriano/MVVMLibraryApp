@@ -17,7 +17,7 @@
         />
 
     <TextView
-        android:id="@+id/TxtMainError"
+        android:id="@+id/txt_MainError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -28,7 +28,7 @@
         android:textSize="30sp">
     </TextView>
     <TextView
-        android:id="@+id/TxtDetailedError"
+        android:id="@+id/txt_DetailedError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -39,10 +39,11 @@
         android:textSize="15sp">
     </TextView>
     <Button
+        android:id="@+id/btn_back"
         android:layout_marginTop="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Refresh"
+        android:text="Back"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:backgroundTint="@color/blue"

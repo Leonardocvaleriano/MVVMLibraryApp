@@ -1,16 +1,14 @@
 package com.codeplace.mvvmlibraryapp.ui.home.adapter
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codeplace.mvvmlibraryapp.databinding.ItemsBookBinding
-import com.codeplace.mvvmlibraryapp.ui.home.view.activity.BookDetailsActivity
 import com.codeplace.mvvmlibraryapp.ui.home.view.model.BookContentDto
 import com.codeplace.mvvmlibraryapp.util.priceFormatter
 
-open class BookListAdapter(private val booksList: List<BookContentDto>, val context:Context) :
+open class BookListAdapter(private val booksList: List<BookContentDto>,
+                           private val listener: RecyclerViewClickListener) :
     RecyclerView.Adapter<BookListAdapter.ViewHolder>() {
 
     private lateinit var binding: ItemsBookBinding
@@ -41,15 +39,15 @@ open class BookListAdapter(private val booksList: List<BookContentDto>, val cont
 
                 //The click listener
                 itemsV.cardBook.setOnClickListener{
-                    Intent(context, BookDetailsActivity::class.java).also {
-                        it.putExtra("EXTRA_ID", bookItems.id )
-                        context.startActivity(it)
+                    // Create the call back to the activity.
+                    // so with the listener created, when the book be clicked, we will execute the Interface created previously.
+                    listener.onRecyclerViewCardClick(itemsV.cardBook, bookItems)
                     }
                 }
             }
         }
     }
-}
+
 
 
 

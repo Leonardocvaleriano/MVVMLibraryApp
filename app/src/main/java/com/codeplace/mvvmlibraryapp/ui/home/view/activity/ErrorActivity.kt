@@ -21,6 +21,5 @@ class ErrorActivity : AppCompatActivity() {
             TxtMainError.text = error.toString()
             TxtDetailedError.text = errorDetail.toString()
         }
-
     }
 }

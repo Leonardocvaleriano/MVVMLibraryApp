@@ -10,7 +10,7 @@ import com.codeplace.mvvmlibraryapp.ui.home.view.model.BookContentDto
 interface StateFlow{
     data class Loading(val loading:Boolean):StateFlow
     // This Success class has to be generic, because our app can use this class for implement a lot of kinds of data types.
-    data class Success(val data:List<BookContentDto>):StateFlow
+    data class Success<T>(val data:T):StateFlow
     data class Error(val  errorMessage: String?, val errorCode: String?, val detail: String?, val errorId: String?):StateFlow
 
 }

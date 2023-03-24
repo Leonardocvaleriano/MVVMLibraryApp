@@ -1,5 +1,6 @@
 package com.codeplace.mvvmlibraryapp.network
 
+import com.codeplace.mvvmlibraryapp.MVVMLibraryApplication.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -28,7 +29,7 @@ object RetrofitInstance {
         // Create the RetrofitBuilder
         val retrofit = Retrofit.Builder()
             // This is the URL that we always access with our request.
-            .baseUrl("http://tpbookserver.herokuapp.com")
+            .baseUrl(BASE_URL)
             // Applying the logger
             .client(client)
             // Show how to get the Json and how to parse it to the data class created in the project

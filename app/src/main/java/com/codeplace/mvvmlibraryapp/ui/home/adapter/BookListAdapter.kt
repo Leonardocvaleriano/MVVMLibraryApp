@@ -31,10 +31,10 @@ open class BookListAdapter(private val booksList: List<BookContentDto>,
 
         fun setData(bookItems: BookContentDto?) {
             bookItems?.let {
-                itemsV.txtTitle.text = bookItems.title
+                itemsV.txtTitle.text =  bookItems.title
                 itemsV.txtAuthor.text = bookItems.author
                 itemsV.txtCurrency.text = bookItems.currencyCode
-                itemsV.txtPrice.text = priceFormatter(bookItems.price)
+                itemsV.txtPrice.text = bookItems.price?.let { it1 -> priceFormatter(it1) }
                 itemsV.txtIsbn.text = bookItems.isbn
 
                 //The click listener

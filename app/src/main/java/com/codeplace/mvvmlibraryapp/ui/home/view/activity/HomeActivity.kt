@@ -14,6 +14,8 @@ import com.codeplace.mvvmlibraryapp.ui.home.adapter.BookListAdapter
 import com.codeplace.mvvmlibraryapp.ui.home.adapter.RecyclerViewClickListener
 import com.codeplace.mvvmlibraryapp.ui.home.view.model.BookContentDto
 import com.codeplace.mvvmlibraryapp.ui.home.viewModel.BookViewModel
+import org.json.JSONArray
+import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity(), RecyclerViewClickListener  {
@@ -30,7 +32,6 @@ class HomeActivity : AppCompatActivity(), RecyclerViewClickListener  {
         initObservables()
     }
 
-
     private fun initValues() {
         viewModel.getBookList()
     }
@@ -38,37 +39,39 @@ class HomeActivity : AppCompatActivity(), RecyclerViewClickListener  {
         viewModel.bookList.observe(this){
             when(it){
                 is StateFlow.Loading -> loading(it.loading)
-                is StateFlow.Success<*> -> initBookListAdapter(it.data as List<BookContentDto>)
-                is StateFlow.Error -> errorHandle(it.errorMessage, it.detail)
+                is StateFlow.Success<*> -> fillBookList(it.data as List<BookContentDto?> )
+                is StateFlow.Error -> errorHandle(it.errorMessage)
             }
         }
     }
+    private fun fillBookList(result:List<BookContentDto?>) {
+        viewModel.fillBooksList(result)
+        initBookListAdapter()
+    }
 
-    private fun initBookListAdapter(dataList:List<BookContentDto>) {
+    private fun initBookListAdapter() {
 
         with(binding){
-            val adapter = BookListAdapter(dataList, this@HomeActivity)
+            val adapter = BookListAdapter(viewModel.listBooks, this@HomeActivity)
             recyclerView.layoutManager = LinearLayoutManager(this@HomeActivity)
             recyclerView.adapter = adapter
         }
     }
-
     private fun loading(loading: Boolean) {
         binding.progressBar.visibility = if (loading) VISIBLE else GONE
     }
 
-    private fun errorHandle(error: String?, detail:String?) {
+    private fun errorHandle(error: String?) {
         Intent(this, ErrorActivity::class.java).also {
             it.putExtra("EXTRA_ERROR_MESSAGE", error)
-            it.putExtra("EXTRA_ERROR_DETAIL", detail)
-            startActivity(it)
+             startActivity(it)
         }
      }
 
     override fun onRecyclerViewCardClick(view: View, book: BookContentDto) {
         when(view.id){
             R.id.card_book -> {
-                Intent(this,BookDetailsActivity::class.java).also {
+                Intent(this, BookDetailsActivity::class.java).also {
                     it.putExtra("EXTRA_ID", book.id)
                     startActivity(it)
                 }

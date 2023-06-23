@@ -46,6 +46,7 @@ class BookDetailsActivity : AppCompatActivity() {
     private fun loading(loading: Boolean) {
        with(binding)
        {
+           view.visibility = if (loading) GONE else VISIBLE
            progressBar.visibility =  if(loading) VISIBLE else GONE
            txtDescriptionTitle.visibility = if (loading) GONE else VISIBLE
            imgBook.visibility = if (loading) GONE else VISIBLE

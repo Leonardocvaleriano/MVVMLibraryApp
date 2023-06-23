@@ -14,13 +14,18 @@ class ErrorActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val error = intent.getStringExtra("EXTRA_ERROR_MESSAGE")
-        val errorDetail = intent.getStringExtra("EXTRA_ERROR_DETAIL")
 
 
         with(binding){
-            txtMainError.text = error.toString()
-            txtDetailedError.text = errorDetail.toString()
 
+            val charactersToRemove = arrayOf("\"", "{", ":", "}")
+            val wordToRemove = "message"
+
+            txtMainError.text = error?.replace(charactersToRemove[0],"")
+                ?.replace(charactersToRemove[1],"")
+                ?.replace(charactersToRemove[2],"")
+                ?.replace(charactersToRemove[3],"")
+                ?.replace(wordToRemove,"")
             btnBack.setOnClickListener {
                 finish()
             }
